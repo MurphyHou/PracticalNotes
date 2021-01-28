@@ -63,7 +63,7 @@ const httpPost = (url, data, callback, err = console.error) => {
     request.onerror = () => err(request);     
     request.send(data); 
 }; 
-const newPost = { 
+const newPost = {
     userId: 1, 
     id: 1337, 
     title:  Foo ,     
