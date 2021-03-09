@@ -1,7 +1,7 @@
-## 父子组件通信（2.x）  
+## 父子组件通信 
 - 子组件
 ```
-template>
+<template>
   <div>
     子组件:<span>{{childValue}}</span>
     <!-- 定义一个子组件传值的方法 -->
@@ -82,3 +82,23 @@ template>
        }
      }
      ```
+- 依赖注入（Vue3.0）
+    > Vue3.0组合式 API 中使用 provide/inject,两者都只能在当前活动实例的 setup() 期间调用  
+    > >通过父组件提供给后代组件曝露的属性和方法  
+    ```
+    父组件:
+    data(){
+        return{
+              name:"父亲的名字"
+            }
+    },
+    provide:function(){
+        return {
+              getName: this.name
+            }
+        }
+    
+    子组件接收:
+        inject:["getName"]
+    ```
+
