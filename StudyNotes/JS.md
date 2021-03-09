@@ -66,7 +66,7 @@ const httpPost = (url, data, callback, err = console.error) => {
 const newPost = {
     userId: 1, 
     id: 1337, 
-    title:  Foo ,     
+    title:  Foo,     
     body:  bar bar bar  
 }; 
 
