@@ -131,3 +131,18 @@ export const checkStr = (str, type) => {
     }
 }
 ```
+## 8. 单纯数据的非空校验 
+```
+function isEmpty(value) {
+    if (['', null, undefined].includes(value)) {  
+        return true
+    }
+    if (Array.prototype.isPrototypeOf(value) && value.length === 0) {  
+        return true;
+    } 
+    if (Object.prototype.isPrototypeOf(value) && Object.keys(value).length === 0) {  
+        return true;
+    }  
+    return false;
+}
+```
