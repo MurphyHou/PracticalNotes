@@ -28,3 +28,4 @@
 *永远如初时美好*  
 
 ***Now and then it's good to pause in our pursuit of happiness and just be happy.***  
+***The secret of success is to do the common things uncommonly well***

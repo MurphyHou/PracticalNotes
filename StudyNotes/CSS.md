@@ -110,4 +110,57 @@
       }
     ```  
   *该属性可能取6个值，除了auto，其他都与align-items属性完全一致。*
+
+  ## 3. CSS radial-gradient() 函数  
+  *radial-gradient() 函数用径向渐变创建 "图像"。径向渐变由中心点定义。为了创建径向渐变你必须设置两个终止色。*    
+  *语法：background-image: radial-gradient(shape size at position, start-color, ..., last-color)*    
+  > Shape: 确定圆的类型   
+  + ellipse (默认): 指定椭圆形的径向渐变。  
+  + circle ：指定圆形的径向渐变 
+
+  > Size:	定义渐变的大小  
+  + farthest-corner (默认) : 指定径向渐变的半径长度为从圆心到离圆心最远的角  
+  + closest-side ：指定径向渐变的半径长度为从圆心到离圆心最近的边  
+  + closest-corner ： 指定径向渐变的半径长度为从圆心到离圆心最近的角  
+  + farthest-side ：指定径向渐变的半径长度为从圆心到离圆心最远的边  
+
+  > Position: 定义渐变的位置   
+  + center（默认）：设置中间为径向渐变圆心的纵坐标值。  
+  + top：设置顶部为径向渐变圆心的纵坐标值。  
+  + bottom：设置底部为径向渐变圆心的纵坐标值。
+
+  > Start-color, ..., Last-color: 用于指定渐变的起止颜色  
+
+  *卡券效果制作*  
+  `
+    <p class="coupon">
+      <span>200</span>优惠券  
+    </p>  
+  `    
+
+    .coupon {  
+      width: 300px;  
+      height: 100px;  
+      line-height: 100px;  
+      margin: 50px auto;  
+      text-align: center;  
+      position: relative;  
+      background: radial-gradient(circle at right bottom, transparent 10px, #ffffff 0) top right /50% 51px no-repeat,    
+      radial-gradient(circle at left bottom, transparent 10px, #ffffff 0) top left / 50% 51px no-repeat,  
+      radial-gradient(circle at right top, transparent 10px, #ffffff 0) bottom right / 50% 51px no-repeat,
+      radial-gradient(circle at left top, transparent 10px, #ffffff 0) bottom left / 50% 51px no-repeat;  
+      filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, .2));
+    }
+
+    .coupon span {
+      display: inline-block;
+      vertical-align: middle;
+      margin-right: 10px;
+      color: red;
+      font-size: 50px;
+      font-weight: 400;
+    }
+  
+
+
      
