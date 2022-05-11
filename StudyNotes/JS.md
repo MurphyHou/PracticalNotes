@@ -146,7 +146,7 @@ function isEmpty(value) {
     return false;
 }
 ```
-## 9.1. 用??代替||，用于判断运算符左侧的值为null或undefined时，才返回右侧的值
+## 9. 用??代替||，用于判断运算符左侧的值为null或undefined时，才返回右侧的值
 || 运算符是左边是空字符串或false或0等falsy值，都会返回后侧的值。而??必须运算符左侧的值为null或undefined时，才会返回右侧的值。因此0||1的结果为1，0??1的结果为0
 ```
 const response = {
@@ -164,4 +164,59 @@ const nullValue = response.settings.nullValue ?? 'some other default'; // result
 const headerText = response.settings.headerText ?? 'Hello, world!'; // result: ''
 const animationDuration = response.settings.animationDuration ?? 300; // result: 0
 const showSplashScreen = response.settings.showSplashScreen ?? true; // result: false
+```
+## 10. 使用?.简化&&和三元运算符
+?.直接在链式调用的时候判断，判断左侧的对象是否为null或undefined，如果是的，就不再往下运算，返回undefined，如果不是，则返回右侧的值
+```
+var street = user.address && user.address.street;
+
+var fooInput = myForm.querySelector('input[name=foo]')
+var fooValue = fooInput ? fooInput.value : undefined
+
+// 简化
+var street = user.address?.street
+var fooValue = myForm.querySelector('input[name=foo]')?.value
+```
+注：常见写法  
+1. obj?.prop  对象属性  
+2. obj?.[expr]  对象属性  
+3. func?.(...args)  函数或对象方法的调用  
+   
+## 11. 使用动态导入import()实现按需加载（优化静态import）
+```
+import defaultExport from "module-name";
+import * as name from "module-name";
+```
+但是静态引入的import 语句需要依赖于 type="module" 的script标签，而且有的时候我们希望可以根据条件来按需加载模块，比如以下场景：
+
+当静态导入的模块很明显的降低了代码的加载速度且被使用的可能性很低，或者并不需要马上使用它
+当静态导入的模块很明显的占用了大量系统内存且被使用的可能性很低
+当被导入的模块，在加载时并不存在，需要异步获取
+当被导入的模块有副作用，这些副作用只有在触发了某些条件才被需要时
+这个时候我们就可以使用动态引入import()，它跟函数一样可以用于各种地方，返回的是一个 promise
+
+基本使用如下两种形式 
+
+```
+//形式 1
+import('/modules/my-module.js')
+  .then((module) => {
+    // Do something with the module.
+  });
+  
+ //形式2
+let module = await import('/modules/my-module.js');
+```
+## 12.使用顶层 await（top-level await）简化 async 函数
+顶层 await 允许开发者在 async 函数外部使用 await 字段
+```
+let module = await import('/modules/my-module.js');
+/以前
+(async function () {
+  await Promise.resolve(console.log('🎉'));
+  // → 🎉
+})();
+
+//简化后
+await Promise.resolve(console.log('🎉'));
 ```
