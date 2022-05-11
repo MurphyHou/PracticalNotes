@@ -146,3 +146,22 @@ function isEmpty(value) {
     return false;
 }
 ```
+## 9.1. 用??代替||，用于判断运算符左侧的值为null或undefined时，才返回右侧的值
+|| 运算符是左边是空字符串或false或0等falsy值，都会返回后侧的值。而??必须运算符左侧的值为null或undefined时，才会返回右侧的值。因此0||1的结果为1，0??1的结果为0
+```
+const response = {
+  settings: {
+    nullValue: null,
+    height: 400,
+    animationDuration: 0,
+    headerText: '',
+    showSplashScreen: false
+  }
+};
+
+const undefinedValue = response.settings.undefinedValue ?? 'some other default'; // result: 'some other default'
+const nullValue = response.settings.nullValue ?? 'some other default'; // result: 'some other default'
+const headerText = response.settings.headerText ?? 'Hello, world!'; // result: ''
+const animationDuration = response.settings.animationDuration ?? 300; // result: 0
+const showSplashScreen = response.settings.showSplashScreen ?? true; // result: false
+```
